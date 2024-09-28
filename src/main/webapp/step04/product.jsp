@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "dto.Product" %>
-<jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean>
+<%@ page import = "dao.ProductRepository" %>
+ <jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,6 +37,7 @@
   		<div class="container position-relative mt-5">
   				<%
 	  				String id = request.getParameter("id");
+  					
 	  				Product product = productDAO.getProductById(id);
 	  			%>
   				<div class="row mt-5">
@@ -46,13 +48,14 @@
 	  			<br />
 	  			<div class="row">
 	  				<div class="col-md-6">
-	  					<h3><%=product.getPname() %></h3>
-	  					<p><%=product.getDescription() %></p>
-	  					<p><b>상품코드 : </b><span><%=product.getProductId() %></span></p>
-	  					<p><b>게임 이름 : </b><span><%=product.getPname() %></span></p>
-	  					<p><b>개발자 이름 : </b><span><%=product.getProgramName() %></span></p>
-	  					<p><b>게임 장르 : </b><span><%=product.getDescription() %></span></p>
-  					    <p>
+	  					<% if (product != null) { %>
+						    <p><b>상품코드 : </b><span><%= product.getProductId() %></span></p>
+						    <p><b>게임 이름 : </b><span><%= product.getPname() %></span></p>
+						    <p><b>개발자 이름 : </b><span><%= product.getProgramName() %></span></p>
+						    <p><b>게임 장르 : </b><span><%= product.getDescription() %></span></p>
+						<% } else { %>
+						    <p>상품을 찾을 수 없습니다.</p>
+						<% } %>
   					        <a href="#" class="btn btn-info">게임 보러가기 &raquo;</a>
   					        <a href="./index.jsp#projects-section" class="btn btn-secondary">상품 목록 &raquo;</a>
   					    </p>

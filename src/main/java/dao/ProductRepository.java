@@ -8,7 +8,7 @@ public class ProductRepository {
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
 	
 	private static ProductRepository instance = new ProductRepository();
-	public static ProductRepository GetInstance() {
+	public static ProductRepository getInstance() {
 		return instance;
 	}
 	public ProductRepository() {

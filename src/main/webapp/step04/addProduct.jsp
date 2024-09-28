@@ -87,7 +87,7 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="addProduct"><fmt:message key="productId" /></label>
-                        <input type="text" class="form-control" id="addProduct" name="addProduct" required>
+                        <input type="text" class="form-control" id="addProduct" name="id" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="gameName"><fmt:message key="pname" /></label>

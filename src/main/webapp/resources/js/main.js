@@ -1,11 +1,14 @@
- AOS.init({
+/* AOS.init({
  	duration: 800,
  	easing: 'slide'
  });
+*/
+//(function($) {
+	$(function(){
+		
 
-(function($) {
 
-	"use strict";
+	//"use strict";
 
 	$(window).stellar({
     responsive: true,
@@ -273,5 +276,6 @@
 
 
 
-})(jQuery);
+//})(jQuery);
+})
 
