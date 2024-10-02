@@ -26,7 +26,7 @@
     String fname = (String)files.nextElement();
     String fileName = multi.getFilesystemName(fname);
 
-    ProductRepository dao = ProductRepository.getInstance();
+    ProductRepository dao = ProductRepository.GetInstance();
     
     Product newProduct = new Product();
     newProduct.setProductId(productId);
