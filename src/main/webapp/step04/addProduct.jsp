@@ -63,14 +63,14 @@
 <body>
     <!-- 한글과 영문 중에 원하는 언어를 선택할 수 있도록 설정 -->
     <fmt:setLocale value='<%= request.getParameter("language") != null ? request.getParameter("language") : "ko" %>'/>
-    <fmt:bundle basename="bundle.lanuage">
+    <fmt:bundle basename="bundle.language">
 
     <!-- header include -->
     <%@ include file="navi.jsp" %>
 
     <div class="container mt-5 pt-5">
         <div class="jumbotron">
-            <form class="needs-validation" action="./processAddProduct.jsp" method="post" enctype="multipart/form-data" novalidate>
+            <form class="needs-validation" action="./processAddProduct.jsp" method="post" enctype="multipart/form-data" >
                 <div class="row m-3">
                     <div class="col-6">
                         <h1><fmt:message key="title" /></h1>
@@ -87,15 +87,15 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="addProduct"><fmt:message key="productId" /></label>
-                        <input type="text" class="form-control" id="addProduct" name="id" required>
+                        <input type="text" class="form-control" id="addProduct" name="addProduct" >
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="gameName"><fmt:message key="pname" /></label>
-                        <input type="text" class="form-control" id="gameName" name="gameName" required>
+                        <input type="text" class="form-control" id="gameName" name="gameName" >
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="programerName"><fmt:message key="programName" /></label>
-                        <input type="text" class="form-control" id="programerName" name="programerName" required>
+                        <input type="text" class="form-control" id="programerName" name="programerName" >
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@
 
                     <div class="col-md-3 mb-3">
                         <label for="background" class="file-label"><fmt:message key="filename" /><span id="file-label-text"></span></label>
-                        <input type="file" class="form-control" id="background" name="background" onchange="updateFileName()" required>
+                        <input type="file" class="form-control" id="background" name="background" onchange="updateFileName()" >
                         <span id="file-name"><fmt:message key = "send"></fmt:message></span>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
     </fmt:bundle>
 
     <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <!-- <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div> -->
 
     <!-- 스크립트 파일들 -->
     <script src="../resources/js/main.js"></script>

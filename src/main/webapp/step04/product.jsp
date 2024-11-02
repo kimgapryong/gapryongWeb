@@ -27,6 +27,16 @@
     <link rel="stylesheet" href="../resources/css/flaticon.css">
     <link rel="stylesheet" href="../resources/css/icomoon.css">
     <link rel="stylesheet" href="../resources/css/style.css">
+    
+      <script>
+     function addToCart(){
+    	 if(confirm("눌러주세요")){
+    		 document.addForm.submit();
+    	 }else{
+    		 document.addForm.reset();
+    	 }
+     }
+  </script>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
@@ -37,8 +47,8 @@
   		<div class="container position-relative mt-5">
   				<%
 	  				String id = request.getParameter("id");
-  					
-	  				Product product = productDAO.getProductById(id);
+  				 	ProductRepository dao = ProductRepository.GetInstance();
+	  				Product product = dao.getProductById(id);
 	  			%>
   				<div class="row mt-5">
 	  				<h1>상품 상세 정보</h1><br />
@@ -56,9 +66,11 @@
 						<% } else { %>
 						    <p>상품을 찾을 수 없습니다.</p>
 						<% } %>
-  					        <a href="#" class="btn btn-info">게임 보러가기 &raquo;</a>
+						 <form action="./addLike.jsp?id=<%=product.getProductId() %>" name="addForm" method="post">
+  					        <a href="./cart.jsp" class="btn btn-info">게임 보러가기 &raquo;</a>
   					        <a href="./index.jsp#projects-section" class="btn btn-secondary">상품 목록 &raquo;</a>
-  					    </p>
+  					        <input onclick="addToCart();" class="btn btn-danger my-2" value="좋아요 &raquo;" type="button">
+  					     </form>
 	  				</div>
 	  				<div class="col-md-6">
 	  				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(../resources/images/product/<%= product.getFilename()%>);">

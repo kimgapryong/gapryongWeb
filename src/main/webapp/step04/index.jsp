@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
@@ -331,9 +333,19 @@
  
 
     <section class="ftco-section ftco-project" id="projects-section">
-    	<%
+    	<%-- <%
     		ProductRepository dao = productDAO.GetInstance();
         	ArrayList<Product> listOfProducts = dao.getAllProducts();
+    	%> --%>
+    	<%
+    		PreparedStatement pstmt = null;
+    		ResultSet rs = null;
+    		String sql = "";
+    		pstmt = conn.prepareStatement(sql);
+    		rs = pstmt.executeQuery();
+    		while (rs.next()){
+    			
+    		}
     	%>
     	<div class="container">
     		<div class="row justify-content-center pb-5">
@@ -354,6 +366,7 @@
     					<div class="overlay"></div>
 	    				<div class="text text-center p-4">
 	    					<h3><a href="#"><%= product.getPname() %></a></h3>
+	    					<span><%= product.getProductId() %> <br /> </span>
 	    					<span><%= product.getDescription() %> <br /> </span>
 	    					<span><%= product.getProgramName() %> <br /> </span>
 	    					<a class="btn btn-primary" href="./product.jsp?id=<%= product.getProductId()%>">보러가기</a>

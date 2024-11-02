@@ -11,6 +11,11 @@ public class Product implements Serializable {
 	private int quantity;
 	
 	
+	public String getFilename() {
+		return filename;
+	}
+
+
 	public int getQuantity() {
 		return quantity;
 	}
@@ -18,11 +23,6 @@ public class Product implements Serializable {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-
-	public String getFilename() {
-		return filename;
 	}
 
 

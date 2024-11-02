@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	//String filename = "";
-	String realFolder = application.getRealPath("/resources/images/product");
+	String realFolder = application.getRealPath("/resources/images/product/");
 	String encType = "utf-8";
 	int maxSize = 5 * 1024 * 1024;
 	
@@ -22,7 +22,7 @@
     String description = multi.getParameter("genre");
 
     
-    Enumeration files =  multi.getFileNames();
+    Enumeration files = multi.getFileNames();
     String fname = (String)files.nextElement();
     String fileName = multi.getFilesystemName(fname);
 
@@ -36,7 +36,7 @@
    	newProduct.setFilename(fileName);
     
     dao.addProduct(newProduct);
-    System.out.print(newProduct.getProductId()+"ttt");
+    System.out.print(newProduct.getProductId());
     System.out.print("test");    
     System.out.print(dao);
     response.sendRedirect("index.jsp");

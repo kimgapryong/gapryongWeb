@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="../resources/css/icomoon.css">
     <link rel="stylesheet" href="../resources/css/style.css">
   </head>
+  <%
+  	String cartId = session.getId(); //JsessionId 얻어오는 메소드
+  %>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
 	  <!-- header include-->
@@ -36,20 +39,20 @@
 			<h1>게임 목록</h1>
 		</div>
 		<div class="container">
-			<div class="row">
+			<div class="row mt-5">
 				<table width ="100%">
 					<tr>
 						<td align="left">
-							<a href="" class="btn btn-danger">게임 목록 리스트 모두 삭제하기</a>
+							<a href="./allRemoveCart.jsp" class="btn btn-danger">게임 목록 리스트 모두 삭제하기</a>
 						</td>
 						<td align="right">
-							<a href="" class="btn btn-success">구매하기</a>
+							<a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-success">구매하기</a>
 						</td>
 					</tr>
 				</table>
 			</div> <!-- row -->
-			<div class="row">
-				<table width ="100%">
+			<div class="row mt-5 mb-5">
+				<table class="table table-striped table-dark">
 					<tr>
 						<th>게임 아이디 - 게임 이름</th>
 						<th>장르</th>
@@ -60,7 +63,7 @@
 					<%
 						int sum = 0;
 						ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
-						if(cartList == null) cartList = new ArrayList<Product>();
+						//if(cartList == null) {cartList = new ArrayList<Product>();}
 						for(int i =0; i < cartList.size(); i++){
 							Product product = cartList.get(i);
 							sum += product.getQuantity();
@@ -71,7 +74,7 @@
 						<td><%= product.getDescription() %></td>
 						<td><%= product.getProgramName() %></td>
 						<td><%=product.getQuantity()%></td>
-						<td><a href="" class="badge badge-danger">삭제</a></td>
+						<td><a href="./removeCart.jsp?id=<%= product.getProductId() %>" class="badge badge-light">삭제</a></td>
 					</tr>
 					
 					<%
