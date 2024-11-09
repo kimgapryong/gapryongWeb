@@ -28,24 +28,12 @@
     <link rel="stylesheet" href="../resources/css/icomoon.css">
     <link rel="stylesheet" href="../resources/css/style.css">
   </head>
-	<script>
-		function deleteConfirm(id){
-			if(confirm("해당 상품을 삭제하시겠습니까?") == true){
-				location.href = "./deleteProduct.jsp?id="+id;
-			}else{
-				return;
-			}
-		}
-	</script>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
 	  <!-- header include-->
 	  <%@ include file = "dbconn.jsp" %>
 	<%@ include file = "navi.jsp" %>
-		<%
-	    	String edit = request.getParameter("edit");
-			if(edit == null) edit = "";
-	    %>
+	
 	  <section id="home-section" class="hero">
 		  <div class="home-slider  owl-carousel">
 	      <div class="slider-item ">
@@ -359,9 +347,8 @@
     				Product product = listOfProducts.get(i);
     		%> --%>
     		<%
-    			/* PreparedStatement pstmt = null;
-    			ResultSet rs = null; */ 
-    			
+    			PreparedStatement pstmt = null;
+    			ResultSet rs = null; 
     			String sql = "select * from product";
     			pstmt = conn.prepareStatement(sql);
     			rs = pstmt.executeQuery();
@@ -377,23 +364,8 @@
 	    					<span><%= rs.getString("productId") %> <br /> </span>
 	    					<span><%= rs.getString("p_description") %> <br /> </span>
 	    					<span><%= rs.getString("programname") %> <br /> </span>
-	    					<span><%= rs.getInt("quantity") %> <br /> </span>
-	    					<p>
-	    						<a class="btn btn-primary" href="./product.jsp?id=<%= rs.getString("productId")%>">보러가기</a>
-	    					
-	    						<%
-	    							if(edit.equals("update")){
-	    						%>
-	    						<a href="./editProduct.jsp?id=<%= rs.getString("productId") %>" class="btn btn-success">수정 &raquo;</a>
-	    						<% 
-	    							}else if(edit.equals("delete")){
-	    						%>
-	    						<span class="btn btn-danger" onclick ="deleteConfirm('<%=rs.getString("productId") %>')">삭제 &raquo;</span>
-	    						<%
-	    							}
-	    						%>
-	    					</p>
-	    				</div>	    					
+	    					<a class="btn btn-primary" href="./product.jsp?id=<%= rs.getString("productId")%>">보러가기</a>
+	    				</div>
     				</div>
   				</div>
   				<%

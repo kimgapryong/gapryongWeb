@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
+<%@ page import = "dto.Product" %>
+<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"></jsp:useBean>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file = "dbconn.jsp" %>
-<%
-	String productId = request.getParameter("id");
-	String sql = "select * from product where productId = ?";
-	pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, productId);
-	rs = pstmt.executeQuery();
-	
-	if(rs.next()){
-	
-	}	
-%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -66,8 +57,6 @@
             fileNameLabel.textContent = "No file chosen";
         }
     }
-    
-
     </script>
 </head>
 
@@ -79,13 +68,12 @@
     <!-- header include -->
     <%@ include file="navi.jsp" %>
 
-	
     <div class="container mt-5 pt-5">
         <div class="jumbotron">
-            <form class="needs-validation" action="./processEditProduct.jsp" method="post" enctype="multipart/form-data" >
+            <form class="needs-validation" action="./processAddProduct.jsp" method="post" enctype="multipart/form-data" >
                 <div class="row m-3">
                     <div class="col-6">
-                        <h1><fmt:message key="titleEdit" /></h1>
+                        <h1><fmt:message key="title" /></h1>
                         <br />
                     </div>
                     <div class="col-6">
@@ -95,53 +83,44 @@
                         </h3>
                     </div>
                 </div>
-			
+
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="addProduct"><fmt:message key="productId" /></label>
-                        <input type="text" class="form-control" id="addProduct" name="addProduct" value="<%=rs.getString("productId")%>">
+                        <input type="text" class="form-control" id="addProduct" name="addProduct" >
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="gameName"><fmt:message key="pname" /></label>
-                        <input type="text" class="form-control" id="gameName" name="gameName" value="<%= rs.getString("pname")%>">
+                        <input type="text" class="form-control" id="gameName" name="gameName" >
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="programerName"><fmt:message key="programName" /></label>
-                        <input type="text" class="form-control" id="programerName" name="programerName" value="<%= rs.getString("programname")%>">
+                        <input type="text" class="form-control" id="programerName" name="programerName" >
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="genre"><fmt:message key="description" /></label>
-                        <input type="text" class="form-control" id="genre" name="genre" value="<%= rs.getString("p_description")%>" required>
+                        <input type="text" class="form-control" id="genre" name="genre" required>
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="background" class="file-label"><fmt:message key="filename" /><span id="file-label-text"></span></label>
-                        
-                        <input type="file" class="form-control" id="background" name="background"  onchange="updateFileName()" >
-
+                        <input type="file" class="form-control" id="background" name="background" onchange="updateFileName()" >
                         <span id="file-name"><fmt:message key = "send"></fmt:message></span>
                     </div>
                 </div>
 
                 <div class="row m-3">
                     <div class="col-6">
-                        <input type="submit" class="btn btn-primary mb-3 btn-block" value="<fmt:message key='editbutton' />">
+                        <input type="submit" class="btn btn-primary mb-3 btn-block" value="<fmt:message key='button' />">
                     </div>
                 </div>
             </form>
         </div>
     </div>
-	<%
-	if (rs != null)
-		rs.close();
-	if (pstmt != null)
-		pstmt.close();
-	if (conn != null)
-		conn.close();
-	%>
+
     <!-- footer include -->
     <%@ include file="footer.jsp" %>
     </fmt:bundle>
