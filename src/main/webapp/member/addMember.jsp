@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dao.ProductRepository"%>
-<%@ page import="dto.Product"%>
-<jsp:useBean id="productDAO" class="dao.ProductRepository"
-	scope="session"></jsp:useBean>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +36,32 @@
 	margin: 200px 0 100px;
 }
 </style>
+
+<script>
+	function checkForm(){
+		if(!document.newMember.id.value){
+		alert("아이디를 입력해주세요")
+		return false;
+		}
+		if(!document.newMember.exampleInputPassword1.value){
+			alert("비밀번호를 입력해주세요")
+			return false;
+			}
+		if(!document.newMember.exampleInputPassword2.value){
+			alert("비밀번호를 확인해주세요")
+			return false;
+			}
+		if(!document.newMember.name.value){
+			alert("이름을 입력해주세요")
+			return false;
+			}
+		if(!document.newMember.exampleInputEmail1.value){
+			alert("이메일을 입력해주세요")
+			return false;
+			}
+		document.newMember.submit();
+	}
+</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -52,33 +75,37 @@
 	</div>
 	
 	<div class="container">
-		<form>
+		<form name = "newMember" action='<c:url value="/member/processAddMember.jsp"/>' method="post">
 			<div class="form-group">
 				<label for="exampleInputPassword1">ID</label> <input
-					type="text" class="form-control" id="ID"
+					type="text" class="form-control" name="id" 
 					placeholder="ID">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label> <input
-					type="password" class="form-control" id="exampleInputPassword1"
+					type="password" class="form-control" name="exampleInputPassword1"
 					placeholder="Password">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword2">RePassword</label> <input
-					type="password" class="form-control" id="exampleInputPassword2"
+					type="password" class="form-control" name="exampleInputPassword2"
 					placeholder="RePassword">
 			</div>
 				<div class="form-group">
 				<label for="name">Name</label> <input
-					type="text" class="form-control" id="name"
+					type="text" class="form-control" name="name"
 					placeholder="Name">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
-					type="email" class="form-control" id="exampleInputEmail1"
+					type="email" class="form-control" name="exampleInputEmail1"
 					aria-describedby="emailHelp" placeholder="Enter email">
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<div class="form-group mt-5">
+				<input
+					type="button" class="form-control btn btn-promary" 
+					 value="Submit" onclick="checkForm()">
+			</div>
 		</form>
 	</div>
 
