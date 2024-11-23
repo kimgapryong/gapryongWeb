@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
+<%@ page import = "dao.ProductRepository" %>
+<%@ page import = "dto.Product" %>
+<jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,24 +30,53 @@
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
-<%@ include file = "/step06/navi.jsp" %>
-
-	<div class="container">
-		<%
-			String msg = request.getParameter("msg");
-			if(msg != null){
-				if(msg.equals("1")) out.print("<h2>회원가입을 축하드립니다. 다시 로그인해주세요.</h2>");
-				if(msg.equals("2")) out.print("<h2>로그인에 성공을 축하드립니다.</h2>");
-				if(msg.equals("3")) out.print("<h2>성공적으로 변경함</h2>");
-			}else{
-				out.print("<h2>회원정보가 존재하지 않습니다.</h2>");
-			}
-		%>
-	</div>
+	  <!-- header include-->
+	<%@ include file = "/step06/navi.jsp" %>
 	
+  <div class="container text-center" id="form_layout">
+  <h3>Please sign in</h3>
+  
+  <form name="loginMember" class="form-horizontal"
+			action="<c:url value="/member/processLoginMember.jsp"/>" method="post">
+			<div class="form-group row justify-content-center my-4">
+				<label class="col-sm-2 ">아이디</label>
+				<div class="col-sm-3">
+					<input name="id" type="text" class="form-control" placeholder="id"
+						required autofocus>
+				</div>
+			</div>
+			<div class="form-group row justify-content-center my-4">
+				<label class="col-sm-2">비밀번호</label>
+				<div class="col-sm-3">
+					<input name="pw" type="text" class="form-control"
+						placeholder="password">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+			   <div class="col-sm-5">
+			      <div class="d-grid gap-1">
+			      <%
+					String error = request.getParameter("error");
+						if (error != null) {
+							out.println("<div class='alert alert-danger mt-3'>");
+							out.println("아이디와 비번을 확인해 주세요.");
+							out.println("</div>");
+						}
+					%>
+			       <button class="mt-1 btn btn-lg btn-success btn-block" type="submit">로그인</button>
+			      </div>
+
+					
+
+				</div> 
+			</div>  
+	</form>
+	
+</div>
 
 <!-- footer include -->
     <%@ include file = "/step06/footer.jsp" %>
+  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -67,5 +99,3 @@
     
   </body>
 </html>
-
-	

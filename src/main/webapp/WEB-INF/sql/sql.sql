@@ -3,13 +3,14 @@
 create table member(
     id varchar2(20) not null,
     password varchar2(20),
-    repassword varchar2(20),
+
     name varchar2(20),
     email varchar(30),
     primary key(id)
 );
 select * from member;
 drop table member;
+commit;
 
 
 
