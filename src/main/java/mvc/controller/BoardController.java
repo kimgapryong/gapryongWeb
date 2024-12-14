@@ -131,6 +131,11 @@ public class BoardController extends HttpServlet{
 			RequestDispatcher rd = request.getRequestDispatcher("./step06/cart.jsp");
 			rd.forward(request, response);
 
+		}else if(command.equals("/BoardListDelete.do")) {
+			requestDeleteBoard(request);
+			
+		    RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
+				rd.forward(request, response);
 		}
 	}
 	
@@ -303,6 +308,12 @@ public class BoardController extends HttpServlet{
 		dao.UpdateGame(id);
 		HttpSession session = request.getSession();
 		session.setAttribute("money", money);
+	}
+	
+	public void requestDeleteBoard(HttpServletRequest request) {
+		String num = request.getParameter("number");
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.DeleteBoardList(num);
 	}
 }
 

@@ -86,6 +86,7 @@
     			<c:set var="userId" value="<%=notice.getId() %>"/>
     			<c:if test="${sessionId==userId}">
     				<input type="submit" class="btn btn-info" value ="수정"/>
+    				<a class="btn btn-danger" href="./BoardListDelete.do?number=<%=notice.getNum() %>">삭제하기</a>
     			</c:if>
     			<a href="./BoardListAction.do?pageNum=<%=nowpage %>">되돌아가기</a>
 			</div>

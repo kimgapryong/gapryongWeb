@@ -710,7 +710,7 @@
           </div>
 
           <div class="col-md-6 d-flex">
-          	<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/about.jpg);"></div>
+          	<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/mikus.jpg);"></div>
 
 
           </div>

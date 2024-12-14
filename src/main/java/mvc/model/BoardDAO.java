@@ -311,7 +311,32 @@ public class BoardDAO {
 		}
 	}
 	
+	public void DeleteBoardList(String num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String sql ="delete from board where board_seq = ?";
+		
+try {		
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
 	
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("ㅇ어어런ㄹㄴㅇ루널 여기다");
+		}finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	

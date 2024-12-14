@@ -36,8 +36,8 @@
 	
 	pstmt.setString(1, productId); 
 	pstmt.setString(2, pName);      
-	pstmt.setString(3, programer);  
-	pstmt.setString(4, description); 
+	pstmt.setString(4, programer);  
+	pstmt.setString(3, description); 
 	pstmt.setString(5, fileName);
 	pstmt.setInt(6, 7000);
 	    
