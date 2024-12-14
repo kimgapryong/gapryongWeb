@@ -3,6 +3,9 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "dao.ProductRepository" %>
 <%@ page import = "dto.Product" %>
+
+<%@ page import="java.util.Set, java.util.HashSet" %>
+
 <jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,20 +16,20 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
     
-    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../resources/css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../resources/css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-    <link rel="stylesheet" href="../resources/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
     
-    <link rel="stylesheet" href="../resources/css/flaticon.css">
-    <link rel="stylesheet" href="../resources/css/icomoon.css">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
   </head>
 	<script>
 		function deleteConfirm(id){
@@ -52,14 +55,15 @@
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(../resources/images/bg_1.png);">
+
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(${pageContext.request.contextPath}/resources/images/standby-1.png);">
+
 	          		<div class="overlay"></div>
 	          	</div>
 		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Clark Thompson</span></h1>
-			            <h2 class="mb-4">A Freelance Web Designer</h2>
+			            <h1 class="mb-4 mt-3">Welcome <span>My Portfolio</span></h1>
 			            <p><a href="#" class="btn btn-primary py-3 px-4">Hire me</a> <a href="#" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
 		            </div>
 		          </div>
@@ -71,13 +75,16 @@
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(../resources/images/bg_2.png);">
+
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(${pageContext.request.contextPath}/resources/images/tungslagger_walk-4.png);">
+
+	       
 	          		<div class="overlay"></div>
 	          	</div>
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm a <span>web designer</span> based in London</h1>
+			            <h1 class="mb-4 mt-3">I'm a <span>Game Programers</span> based in London</h1>
 			            <p><a href="#" class="btn btn-primary py-3 px-4">Hire me</a> <a href="#" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
 		            </div>
 		          </div>
@@ -86,14 +93,68 @@
 	      </div>
 	    </div>
     </section>
+   	<section id="home-Slider">
+   		<div class="bd-example">
+   		<div class="container">
+   		   		<h1 class="text-center mt-5 jumbotron bg-primary">Poupler Game</h1>
+   		</div>
 
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <img src="${pageContext.request.contextPath}/resources/images/Brole.jpg" class="d-block w-50 mx-auto"  alt="...">
+
+        <div class="carousel-caption d-none d-md-block text-warning">
+          <h5 class=" font-weight-bold">브롤스타즈</h5>
+          <p>다양한 환경에서 즐길수 있는 탄막슈팅 게임입니다</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+
+        <img src="${pageContext.request.contextPath}/resources/images/Roblox.jpg" class="d-block w-50 mx-auto" alt="...">
+
+        
+        <div class="carousel-caption d-none d-md-block text-warning">
+          <h5 class=" font-weight-bold">로블록스</h5>
+          <p>멀티버스 세계에서 다양한 활동들을 체험하며 즐기십시오</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+
+        <img src="${pageContext.request.contextPath}/resources/images/Minclapet.jpg" class="d-block w-50 mx-auto" alt="...">
+
+        <div class="carousel-caption d-none d-md-block text-warning">
+          <h5 class=" font-weight-bold">마인크래프트</h5>
+          <p>멀티버스세계에서 다양한 블록들을 활용하여 즐기는 멋진 세계에 오세요</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+    </section>
     <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
     	<div class="container">
     		<div class="row d-flex">
     			<div class="col-md-6 col-lg-5 d-flex">
     				<div class="img-about img d-flex align-items-stretch">
     					<div class="overlay"></div>
-	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(../resources/images/bg_1.png);">
+
+	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(${pageContext.request.contextPath}/resources/images/jwagyeom.jpg);">
+
 	    				</div>
     				</div>
     			</div>
@@ -104,11 +165,11 @@
 		            <h2 class="mb-4">About Me</h2>
 		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 		            <ul class="about-info mt-4 px-md-0 px-2">
-		            	<li class="d-flex"><span>Name:</span> <span>Clark Thompson</span></li>
-		            	<li class="d-flex"><span>Date of birth:</span> <span>January 01, 1987</span></li>
+		            	<li class="d-flex"><span>Name:</span> <span>Kimgapryong</span></li>
+		            	<li class="d-flex"><span>Date of birth:</span> <span>February 22, 2007</span></li>
 		            	<li class="d-flex"><span>Address:</span> <span>San Francisco CA 97987 USA</span></li>
 		            	<li class="d-flex"><span>Zip code:</span> <span>1000</span></li>
-		            	<li class="d-flex"><span>Email:</span> <span>clarkthomp@gmail.com</span></li>
+		            	<li class="d-flex"><span>Email:</span> <span>kimmujin@gmail.com</span></li>
 		            	<li class="d-flex"><span>Phone: </span> <span>+1-2234-5678-9-0</span></li>
 		            </ul>
 		          </div>
@@ -190,9 +251,9 @@
     	<div class="container">
     		<div class="row justify-content-center py-5 mt-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Services</h1>
-            <h2 class="mb-4">Services</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          	<h1 class="big big-2">Games</h1>
+            <h2 class="mb-4">Games</h2>
+            <p> Check out the different types of games you want</p>
           </div>
         </div>
     		<div class="row">
@@ -202,7 +263,7 @@
 								<i class="flaticon-analysis"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">Web Design</h3>
+								<h3 class="mb-5">Action</h3>
 							</div>
 						</a>
 					</div>
@@ -212,7 +273,7 @@
 								<i class="flaticon-flasks"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">Phtography</h3>
+								<h3 class="mb-5">Adventure </h3>
 							</div>
 						</a>
 					</div>
@@ -222,7 +283,7 @@
 								<i class="flaticon-ideas"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">Web Developer</h3>
+								<h3 class="mb-5">Role-playing Game</h3>
 							</div>
 						</a>
 					</div>
@@ -233,7 +294,7 @@
 								<i class="flaticon-analysis"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">App Developing</h3>
+								<h3 class="mb-5">Strategy </h3>
 							</div>
 						</a>
 					</div>
@@ -243,7 +304,7 @@
 								<i class="flaticon-flasks"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">Branding</h3>
+								<h3 class="mb-5">Simulation </h3>
 							</div>
 						</a>
 					</div>
@@ -253,7 +314,7 @@
 								<i class="flaticon-ideas"></i>
 							</span>
 							<div class="desc">
-								<h3 class="mb-5">Product Strategy</h3>
+								<h3 class="mb-5">Sports </h3>
 							</div>
 						</a>
 					</div>
@@ -266,15 +327,15 @@
 			<div class="container">
 				<div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Skills</h1>
-            <h2 class="mb-4">My Skills</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          	<h1 class="big big-2">genre</h1>
+            <h2 class="mb-4">Most popular genre</h2>
+            <p>Check out the sites you enjoy the most</p>
           </div>
         </div>
 				<div class="row">
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>Photoshop</h3>
+							<h3>Action </h3>
 							<div class="progress">
 							 	<div class="progress-bar color-1" role="progressbar" aria-valuenow="90"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:90%">
@@ -285,7 +346,7 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>jQuery</h3>
+							<h3>Adventure </h3>
 							<div class="progress">
 							 	<div class="progress-bar color-2" role="progressbar" aria-valuenow="85"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:85%">
@@ -296,7 +357,7 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>HTML5</h3>
+							<h3>Role-playing Game</h3>
 							<div class="progress">
 							 	<div class="progress-bar color-3" role="progressbar" aria-valuenow="95"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:95%">
@@ -307,7 +368,7 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>CSS3</h3>
+							<h3>Strategy </h3>
 							<div class="progress">
 							 	<div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:90%">
@@ -318,7 +379,7 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>WordPress</h3>
+							<h3>Simulation </h3>
 							<div class="progress">
 							 	<div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:70%">
@@ -329,7 +390,7 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
-							<h3>SEO</h3>
+							<h3>Sports </h3>
 							<div class="progress">
 							 	<div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
 							  	aria-valuemin="0" aria-valuemax="100" style="width:80%">
@@ -343,69 +404,123 @@
 		</section>
  
 
-    <section class="ftco-section ftco-project" id="projects-section">
-    	
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Our Projects</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-          </div>
-        </div>
-    		<div class="row">
-    		<%-- <%
-    			for(int i = 0; i< listOfProducts.size(); i++){
-    				Product product = listOfProducts.get(i);
-    		%> --%>
-    		<%
-    			/* PreparedStatement pstmt = null;
-    			ResultSet rs = null; */ 
-    			
-    			String sql = "select * from product";
-    			pstmt = conn.prepareStatement(sql);
-    			rs = pstmt.executeQuery();
-    			while (rs.next()){
-    				
-    		%>
-    		<!-- card start-->
-    			<div class="col-md-4">
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style='background-image: url(../resources/images/product/<%= rs.getString("filename")%>);'>
-    					<div class="overlay"></div>
-	    				<div class="text text-center p-4">
-	    					<h3><a href="#"><%= rs.getString("pname") %></a></h3>
-	    					<span><%= rs.getString("productId") %> <br /> </span>
-	    					<span><%= rs.getString("p_description") %> <br /> </span>
-	    					<span><%= rs.getString("programname") %> <br /> </span>
-	    					<span><%= rs.getInt("quantity") %> <br /> </span>
-	    					<p>
-	    						<a class="btn btn-primary" href="./product.jsp?id=<%= rs.getString("productId")%>">보러가기</a>
-	    					
-	    						<%
-	    							if(edit.equals("update")){
-	    						%>
-	    						<a href="./editProduct.jsp?id=<%= rs.getString("productId") %>" class="btn btn-success">수정 &raquo;</a>
-	    						<% 
-	    							}else if(edit.equals("delete")){
-	    						%>
-	    						<span class="btn btn-danger" onclick ="deleteConfirm('<%=rs.getString("productId") %>')">삭제 &raquo;</span>
-	    						<%
-	    							}
-	    						%>
-	    					</p>
-	    				</div>	    					
-    				</div>
-  				</div>
-  				<%
-    				}
-    			 	if (rs != null) rs.close();
-    	            if (pstmt != null) pstmt.close();
-    	            if (conn != null) conn.close();
-  				%>
-  				<!-- card end -->
-    		</div>
-    	</div>
-    </section>
+     <section class="ftco-section ftco-project" id="projects-section">
+  <div class="container">
+    <div class="row justify-content-center pb-5">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <h1 class="big big-2">Download</h1>
+        <h2 class="mb-4">Download Games</h2>
+        <p>Download the game and play it</p>
+      </div>
+    </div>
+    <div class="row">
+      <%
+
+    String sql = "select * from product";
+    String selsql = "select * from gameList";
+
+    rs = null;
+    ResultSet rss = null;
+    pstmt = null;
+    PreparedStatement pre = null;
+
+    // 먼저 product 테이블에서 데이터를 조회
+    pstmt = conn.prepareStatement(sql);
+    rs = pstmt.executeQuery();
+
+    // gameList 테이블에서 데이터를 조회
+    pre = conn.prepareStatement(selsql);
+    rss = pre.executeQuery();
+
+    if (rs != null && rss != null) {
+%>
+
+
+      <!-- Table start -->
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Game Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Program Name</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Game Image</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <%
+
+    Set<String> productIds = new HashSet<>();
+    while (rss.next()) {
+        productIds.add(rss.getString("productId"));
+    }
+%>
+           <%
+            while (rs.next()) {
+                // gameList의 "check" 값을 먼저 확인하기
+
+        %>
+
+
+
+          <tr>
+            <td class="text-center text-light"><%= rs.getString("productId") %></td>
+            <td class="text-center text-light"><%= rs.getString("pname") %></td>
+            <td class="text-center text-light"><%= rs.getString("p_description") %></td>
+            <td class="text-center text-light"><%= rs.getString("programname") %></td>
+            <td class="text-center text-light"><%= rs.getInt("quantity") %></td>
+            <td style="height: 150px; vertical-align: middle;">
+  <div class="text-center" style="position: relative; width: 100%; height: 100%;">
+
+    <img src="${pageContext.request.contextPath}/resources/images/product/<%= rs.getString("filename") %>" alt="<%= rs.getString("pname") %>" class="img-fluid" style="max-height: 120px; width: auto;">
+  </div>
+</td>
+            <td>
+             <% 
+             		if (productIds.contains(rs.getString("productId"))) {  // "check" 값이 1이면 "View" 버튼에 스타일을 변경
+                %>
+                    <a class="btn btn-success" href="./product.jsp?id=<%= rs.getString("productId") %>">go Game</a>
+                <% 
+                    } else {
+                %>
+                    <a class="btn btn-primary" href="./product.jsp?id=<%= rs.getString("productId") %>">View</a>
+                <% 
+                    }
+
+                    if (edit.equals("update")) {
+                %>
+                    <a href="./editProduct.jsp?id=<%= rs.getString("productId") %>" class="btn btn-success">Edit</a>
+                <% 
+                    } else if (edit.equals("delete")) {
+                %>
+                    <span class="btn btn-danger" onclick="deleteConfirm('<%= rs.getString("productId") %>')">Delete</span>
+                <% 
+                    }
+                %>
+            </td>
+        </tr>
+        <%
+            }
+        %>
+        </tbody>
+      </table>
+      <!-- Table end -->
+     <%
+    }
+    if (rs != null) rs.close();
+    if (rss != null) rss.close();
+    if (pstmt != null) pstmt.close();
+    if (pre != null) pre.close();
+    if (conn != null) conn.close();
+%>
+
+
+    </div>
+  </div>
+</section>
 
 
     <section class="ftco-section" id="blog-section">
@@ -512,7 +627,9 @@
       </div>
     </section>
 
-    <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(../resources/images/bg_1.jpg)">
+
+    <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(${pageContext.request.contextPath}/resources/images/bg_1.jpg)">
+
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-7 ftco-animate text-center">
@@ -593,7 +710,9 @@
           </div>
 
           <div class="col-md-6 d-flex">
-          	<div class="img" style="background-image: url(../resources/images/about.jpg);"></div>
+          	<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/about.jpg);"></div>
+
+
           </div>
         </div>
       </div>
@@ -608,20 +727,21 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../resources/js/jquery.min.js"></script>
-  <script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../resources/js/popper.min.js"></script>
-  <script src="../resources/js/bootstrap.min.js"></script>
-  <script src="../resources/js/jquery.easing.1.3.js"></script>
-  <script src="../resources/js/jquery.waypoints.min.js"></script>
-  <script src="../resources/js/jquery.stellar.min.js"></script>
-  <script src="../resources/js/owl.carousel.min.js"></script>
-  <script src="../resources/js/jquery.magnific-popup.min.js"></script>
-  <script src="../resources/js/aos.js"></script>
-  <script src="../resources/js/jquery.animateNumber.min.js"></script>
-  <script src="../resources/js/scrollax.min.js"></script>
+
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
   
-  <script src="../resources/js/main.js"></script>
-    
+  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
   </body>
 </html>

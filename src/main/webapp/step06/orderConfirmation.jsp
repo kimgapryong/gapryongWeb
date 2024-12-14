@@ -5,6 +5,7 @@
 <%@ page import = "dao.ProductRepository" %>
 <%@ page import = "dto.Product" %>
 <jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean>
+<%@ include file = "dbconn.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,23 +61,30 @@
 					</tr>
 					<%
 						int sum = 0;
-						ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
+						String sql = "select * from addCart"; 
+						//ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
 						//if(cartList == null) {cartList = new ArrayList<Product>();}
-						for(int i =0; i < cartList.size(); i++){
-							Product product = cartList.get(i);
-							sum += product.getQuantity();
+					/* 	for(int i =0; i < cartList.size(); i++){
+							Product product = cartList.get(i); */
+						pstmt = conn.prepareStatement(sql);
+					    rs = pstmt.executeQuery();
+					    while(rs.next()){
+							sum +=  rs.getInt("quantity");
 							
 					%>
 					<tr>
-						<td><%=product.getProductId()%> - <%= product.getPname() %></td>
-						<td><%= product.getDescription() %></td>
-						<td><%= product.getProgramName() %></td>
-						<td><%=product.getQuantity()%></td>
-						<td><a href="./removeCart.jsp?id=<%= product.getProductId() %>" class="badge badge-light">삭제</a></td>
+						<td><%=rs.getString("productId")%> - <%= rs.getString("pname") %></td>
+						<td><%= rs.getString("p_description") %></td>
+						<td><%= rs.getString("programname") %></td>
+						<td><%= rs.getInt("quantity")%></td>
+						<td><a href="./removeCart.jsp?id=<%= rs.getString("productId") %>" class="badge badge-light">삭제</a></td>
 					</tr>
 					
 					<%
 						}
+					    if (rs != null) rs.close();
+				        if (pstmt != null) pstmt.close();
+				        if (conn != null) conn.close();
 					%>
 					<tr>
 						<th></th>

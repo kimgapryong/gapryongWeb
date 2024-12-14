@@ -67,6 +67,10 @@
 		document.newMember.submit();
 	}
 </script>
+
+<%-- <%
+	String sessionId = (String)session.getAttribute("sessionId");
+%> --%>
 <sql:setDataSource var="dataSource"
 		url="jdbc:oracle:thin:@localhost:1521:xe"
 		driver="oracle.jdbc.driver.OracleDriver" user="C##dbexam" password="m1234" />
@@ -80,19 +84,24 @@
 
 	<!-- header include-->
 
-	<div class="container">
+		
+
+
+	<div class="container" id="form_layout">
 		<div class="mb-3">
 			<div class="col">
-				<h1 class="display-4 text-center pt-4 pb-4">회원 수정</h1>
+				<h1 class="display-3 text-center">회원 수정</h1>
 			</div>
 		</div>
 		
+
 		<c:forEach var="row" items="${resultSet.rows}">
 		<c:set var="email" value="${row.email}"/>
 		<c:set var="mail1" value="${email.split('@')[0]}"/>
 		<c:set var="mail2" value="${email.split('@')[1]}"/>
 		<form name="newMember" class="form-horizontal"
 			action="<c:url value="/member/processUpdateMember.jsp"/>" method="post">
+
 			<div class="row justify-content-around align-self-center">
 				<div class="col-10 ">
 					<div class="form-group  row justify-content-around">
@@ -145,9 +154,8 @@
 							class="btn btn-primary py-3 px-5" value="취소 " onclick="reset()">
 					</div>
 				</div>
-							
-				</div>
-			</div>
+
+			
 		</form>
 		</c:forEach>
 	</div>

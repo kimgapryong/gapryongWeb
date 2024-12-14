@@ -3,6 +3,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "dto.Product" %>
 <%@ page import = "dao.ProductRepository" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:useBean id="productDAO" class = "dao.ProductRepository" scope = "session"></jsp:useBean> 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,20 +14,20 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="../resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
     
-    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../resources/css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../resources/css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-    <link rel="stylesheet" href="../resources/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
     
-    <link rel="stylesheet" href="../resources/css/flaticon.css">
-    <link rel="stylesheet" href="../resources/css/icomoon.css">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     
       <script>
      function addToCart(){
@@ -49,6 +50,7 @@
   		<div class="container position-relative mt-5">
   				<%
 	  				String id = request.getParameter("id");
+  				 	request.setAttribute("id", id);
   	/* 			 	PreparedStatement pstmt = null;
   			    	ResultSet rs = null; */
   			    	String sql = "select * from product where productId = ?";
@@ -72,9 +74,10 @@
 						    <p><b>개발자 이름 : </b><span><%= rs.getString("programname") %></span></p>
 						    <p><b>게임 장르 : </b><span><%= rs.getString("p_description") %></span></p>
 
-						 <form action="./addLike.jsp?id=<%=rs.getString("productId")%>" name="addForm" method="post">
-  					        <a href="./cart.jsp" class="btn btn-info">게임 보러가기 &raquo;</a>
-  					        <a href="./index.jsp#projects-section" class="btn btn-secondary">상품 목록 &raquo;</a>
+						 <form action="${pageContext.request.contextPath}/step06/addLike.jsp?id=<%=rs.getString("productId")%>" name="addForm" method="post">
+  					       	<a href="<c:url value='/AddCartList.do?id=${id}'/>" class="btn btn-info">게임 담기 &raquo;</a>
+  					        <a href="${pageContext.request.contextPath}/step06/shippingInfo.jsp?cartId=<%=rs.getString("productId") %>" class="btn btn-success">구매하기</a>
+  					        <a href="${pageContext.request.contextPath}/step06/index.jsp#projects-section" class="btn btn-secondary">상품 목록 &raquo;</a>
   					        <input onclick="addToCart();" class="btn btn-danger my-2" value="좋아요 &raquo;" type="button">
   					     </form>
   					     						<% } else { %>
@@ -85,7 +88,7 @@
   					     
 	  				</div>
 	  				<div class="col-md-6">
-	  				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(../resources/images/product/<%= rs.getString("filename")%>);">
+	  				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/product/<%= rs.getString("filename")%>);">
 	  				</div>
 	  				<%
  	  					if (rs != null) rs.close();
@@ -107,20 +110,20 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../resources/js/jquery.min.js"></script>
-  <script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../resources/js/popper.min.js"></script>
-  <script src="../resources/js/bootstrap.min.js"></script>
-  <script src="../resources/js/jquery.easing.1.3.js"></script>
-  <script src="../resources/js/jquery.waypoints.min.js"></script>
-  <script src="../resources/js/jquery.stellar.min.js"></script>
-  <script src="../resources/js/owl.carousel.min.js"></script>
-  <script src="../resources/js/jquery.magnific-popup.min.js"></script>
-  <script src="../resources/js/aos.js"></script>
-  <script src="../resources/js/jquery.animateNumber.min.js"></script>
-  <script src="../resources/js/scrollax.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
   
-  <script src="../resources/js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
     
   </body>
 </html>

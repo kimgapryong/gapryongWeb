@@ -67,7 +67,7 @@
 	data-offset="300">
 
 	<!-- header include-->
-	<%@ include file="/step06/navi.jsp"%>
+	<%@ include file="../step06/navi.jsp"%>
 	<div class="container mt-5 pt-1">
 	<div class="jumbotron bg-secondary mt-5">
 		<h1 class ="text-center">회원 가입</h1>
